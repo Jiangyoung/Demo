@@ -1,15 +1,30 @@
 <?php
-//array_map 在内部类中如何使用
-class C
+class A
 {
-	public function f($val){
-		return $val*3+2;
-	}	
-	public function test(){
-		$arr = range(1,4);
-		return array_map(array($this,'f'),$arr);		
+	function af($val){
+		return $val * 2 + 3;
 	}
 }
-$obj = new C();
-$res = $obj->test();
-var_dump($res);
+class C
+{
+	function f($val){
+		return $val * 2 + 3;
+	}
+	function cf($arr){		
+		return array_map(array(__CLASS__,'f'),$arr);
+		//return array_map(array($this,'f'),$arr);
+	}
+}
+$arr = array(
+	100,
+	200,
+	300,
+	400,
+	500
+);
+$a = new A();
+$arr1 = array_map(array($a,'af'),$arr);
+print_r($arr1);
+$c = new C();
+$arr2 = $c->cf($arr);
+print_r($arr2);
