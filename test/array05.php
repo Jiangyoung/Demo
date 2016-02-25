@@ -1,7 +1,7 @@
 <?php
-
+foreach (range(1000,90000,1000) as $xx){
 $arr = array();
-for($i=80000;$i>=1;$i--){
+for($i=$xx;$i>=1;$i--){
 	$arr[] = array('id'=>$i,'_id'=>$i%7,'name'=>'sdkjflsjf');
 }
 
@@ -16,14 +16,15 @@ foreach($arr as $v){
 //print_r($arr1);
 
 $t2 = microtime(true);
-echo 'desc foreach : '.($t2-$t1).PHP_EOL;
+//echo 'desc foreach : '.($t2-$t1).PHP_EOL;
+echo ($t2-$t1)."\t";
 $m2 = memory_get_usage();
-echo 'memory used : '.(($m2-$m1)/1024).PHP_EOL;
+//echo 'memory used : '.(($m2-$m1)/1024).PHP_EOL;
 
 
 
 $arr = array();
-for($i=1;$i<=30000;$i++){
+for($i=1;$i<=$xx;$i++){
 	$arr[] = array('id'=>$i,'_id'=>$i%7,'name'=>'sdkjflsjf');
 }
 
@@ -38,14 +39,10 @@ foreach($arr as $v){
 //print_r($arr1);
 
 $t2 = microtime(true);
-echo 'asc foreach : '.($t2-$t1).PHP_EOL;
+//echo 'asc foreach : '.($t2-$t1).PHP_EOL;
+echo ($t2-$t1)."\t";
 $m2 = memory_get_usage();
-echo 'memory used : '.(($m2-$m1)/1024).PHP_EOL;
-
-
-
-
-
+//echo 'memory used : '.(($m2-$m1)/1024).PHP_EOL;
 
 
 
@@ -57,6 +54,8 @@ $arr1 = array_column($arr,null,'_id');
 //print_r($arr1);
 
 $t2 = microtime(true);
-echo 'array_column : '.($t2-$t1).PHP_EOL;
+//echo 'array_column : '.($t2-$t1).PHP_EOL;
+echo ($t2-$t1)."\n";
 $m2 = memory_get_usage();
-echo 'memory used : '.(($m2-$m1)/1024).PHP_EOL;
+//echo 'memory used : '.(($m2-$m1)/1024).PHP_EOL;
+}

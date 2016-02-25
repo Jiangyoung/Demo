@@ -55,4 +55,3 @@ var_dump($list->current());
 //var_dump(Test::$list->current());
 //var_dump(Test::$list->next());
 
-?>
