@@ -32,7 +32,7 @@ function printResult($result, $n) {
     echo str_repeat('--↓--', $n), PHP_EOL;
     for ($i=0;$i<$n;$i++) {
         for ($j=0;$j<$n;$j++) {
-            echo sprintf("%' ".$n."d", $result[$i][$j] ?? 0);
+            echo sprintf("%' 4d", $result[$i][$j] ?? 0);
         }
         echo PHP_EOL;
     }
